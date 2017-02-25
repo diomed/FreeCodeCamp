@@ -1,0 +1,45 @@
+#nav-top {
+    box-shadow: 2px -1px 10px 0px;
+}
+
+#about {
+    padding: 50px;
+    margin-top: 50px;
+    background-color: grey;
+}
+
+.about-text {
+    color: white !important;
+}
+
+#portfolio {
+    padding: 50px;
+    background-color: #27333cff;
+}
+
+.top-buffer {
+    margin-top: 10px;
+}
+
+#contact {
+    height: 100%;
+    background-color: #ccccccff;
+    padding: 50px;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#copyright {
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    padding: 5px;
+}
+
+.copyright {
+    color: #ffffffff !important;
+}

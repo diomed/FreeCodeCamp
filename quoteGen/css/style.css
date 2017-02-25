@@ -1,0 +1,40 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #89c5dcff !important;
+}
+
+#quoteGen {
+    margin: auto;
+    margin-top: 180px;
+    width: 50%;
+}
+
+
+p {
+    font-size: 24px;
+    color: #212c43ff;
+    quotes: "\201C" "\201D";     
+    font-weight: bold;
+}
+
+p:before {
+    content: open-quote;
+    font-weight: bold;
+}
+
+p:after {
+    content: close-quote;
+    font-weight: bold;
+}
+
+#cite {
+    display: block;
+}
+
+#generate {
+    float: right;
+}
