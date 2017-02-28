@@ -1,0 +1,43 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background: rgb(0,0,10);
+}
+
+h1, h2, p {
+    color: rgb(80,160,255);
+}
+
+h1 {
+    text-align: center;
+}
+
+h2, p {
+    text-align: left;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#random {
+    text-align: center;
+    display: block;
+}
+
+.elements {
+    box-shadow: 10px 10px 10px rgb(10, 10, 100);
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(10, 10, 40);
+}

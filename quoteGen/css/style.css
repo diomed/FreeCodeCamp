@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-    background-color: #89c5dcff !important;
+    background-color: #89c5dc !important;
 }
 
 #quoteGen {
@@ -16,7 +16,7 @@ body {
 
 p {
     font-size: 24px;
-    color: #212c43ff;
+    color: #212c43;
     quotes: "\201C" "\201D";     
     font-weight: bold;
 }
