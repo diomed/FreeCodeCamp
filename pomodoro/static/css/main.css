@@ -1,0 +1,63 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    color: #444;
+}
+
+body {
+    background-color: #eee;
+}
+
+.container {
+    width: 480px;
+    height: 360px;
+    margin: 60px auto 0 auto;
+
+    background-color: white;
+
+    border: solid 1px #eee;
+    border-radius: 1px;
+
+    box-shadow: 10px 5px 12px #ccc;
+}
+
+#session {
+    width: 130px;
+    height: 80px;
+
+    margin: 20px 0 0 20px;
+    
+    float: left;
+}
+
+#session p, #break p{
+    font-size: 18px;
+    text-align: center;
+    display: inline-block;    
+}
+
+#session span, #break span {
+    margin: 0 20px 0 20px;
+}
+
+#break {
+    width: 110px;
+    height: 80px;
+
+    margin: 20px 20px 0 0;
+    
+    float: right;
+}
+
+#countdown {
+    text-align: center;
+    margin: 170px 0 0 0;
+    
+    font-size: 24px;
+}
+
+#countdown span {
+    font-size: 32px;
+}
