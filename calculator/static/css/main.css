@@ -52,6 +52,9 @@ body, html {
 #buttons span:hover, #clrbtn span:hover {
     border: solid 1px #4e5b8d;
     color: #4e5b8d;
+
+    cursor: pointer;
+    cursor: hand;
 }
 
 #calcDisp span {

@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-	    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-	    crossorigin="anonymous"></script>
+    <script src="static/js/jquery-3.1.1.min.js"></script>
 
     <link rel="stylesheet" href="static/css/main.css" type="text/css"/>
     <script src="static/js/main.js" type="text/javascript"></script>
@@ -16,19 +14,17 @@
     <title>Pomodoro Timer</title>
   </head>
   <body>
-    <div class="container">
+      <div id="countdown">
+	<span id="timer">25:00</span>
+      </div>
+      <button id="reset">Reset</button>
       <div id="session">
 	<p>Session Length</p>
-	<span>-</span><p>25</p><span>+</span>
+	<button class="changeVal">-</button><span id="sessVal">25</span><button class="changeVal">+</button>
       </div>
       <div id="break">
 	<p>Break Length</p>
-	<span>-</span><p>5</p><span>+</span>
-      </div>
-      <div id="countdown">
-	<p>Session</p>
-	<span>25:00</span>
-      </div>
-    <div>
+	<button class="changeVal">-</button><span id="breakVal">5</span><button class="changeVal">+</button>
+      </div>      
   </body>
 </html>

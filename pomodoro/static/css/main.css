@@ -7,57 +7,58 @@ html, body {
 }
 
 body {
-    background-color: #eee;
+    background-color: #c95757;
 }
 
-.container {
-    width: 480px;
-    height: 360px;
-    margin: 60px auto 0 auto;
-
-    background-color: white;
-
-    border: solid 1px #eee;
-    border-radius: 1px;
-
-    box-shadow: 10px 5px 12px #ccc;
-}
-
-#session {
-    width: 130px;
-    height: 80px;
-
-    margin: 20px 0 0 20px;
-    
-    float: left;
-}
-
-#session p, #break p{
-    font-size: 18px;
-    text-align: center;
-    display: inline-block;    
-}
-
-#session span, #break span {
-    margin: 0 20px 0 20px;
-}
-
-#break {
-    width: 110px;
-    height: 80px;
-
-    margin: 20px 20px 0 0;
-    
-    float: right;
+button {
+    background-color: #c95757;
+    border: none;
 }
 
 #countdown {
+    background-color: #ffb9b9;
+    color: #444;    
+
+    height: 180px;
+    width: 180px;
+
+    border-radius: 180px;
+
+    line-height: 180px;
     text-align: center;
-    margin: 170px 0 0 0;
-    
-    font-size: 24px;
+    font-size: 48px;
+
+    margin: 90px auto 0 auto;
 }
 
-#countdown span {
-    font-size: 32px;
+#reset {
+    color: #eee;
+    font-size: 24px;
+
+    margin: 10px auto 0 auto;
+    display: block;
+    text-align: center;
+}
+
+#countdown:hover, #reset:hover, .changeVal:hover {
+    cursor: pointer;
+    cursor: hand;
+}
+
+#session, #break {
+    margin: 10px auto 0 auto;
+    color: #eee;
+    font-size: 20px;
+
+    text-align: center;
+}
+
+#sessVal, #breakVal {
+    font-size: 24px;
+    margin: 0 10px 0 10px;
+}
+
+.changeVal {
+    color: #eee;
+    font-size: 24px;
 }
