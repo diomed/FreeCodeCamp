@@ -29,30 +29,39 @@ $(document).ready(function() {
 	$("#breakVal").html(breakDur);
     });
 
-    var clock;    
+    var clock;
+    
+    // clockState used in manipulating the clock
     var clockState = "idle";
 
+    // used to determine if using session timer or break timer
+    var currClock = "session";
+
     var seconds = 60;
+    var minutes;    
     
     $("#countdown").click(function() {
 
-	var minutes = sessDur;
-	
+	if (currClock === "session")
+	    minutes = sessDur;
+	else if (currClock === "break")
+	    minutes = breakDur;
+
+
 	if (clockState === "idle" || clockState === "paused")
 	{
-	    if (minutes == $("#sessVal").text())
-	    {
-		minutes--;
-		sessDur = minutes;
-	    }
-	    
-	    clockState = "active";
 
 	    clock = setInterval(function() {
 
+		if (clockState === "idle")
+		    minutes--;
+		
+		clockState = "active";
+		
+
 		if (seconds > 0)
 		{
-		    seconds--;
+		    --seconds;
 		    if (seconds > 9)
 			$("#timer").html(minutes + ":" + seconds);
 		    else
@@ -62,12 +71,31 @@ $(document).ready(function() {
 		{
 		    if (minutes === 0)
 		    {
-			alert("Breaktime!");
+			if (currClock === "session")
+			{
+			    minutes = breakDur;
+			    currClock = "break";
+			}
+			else if (currClock === "break")
+			{
+			    minutes = sessDur;
+			    currClock = "session";
+			}
+			
+			seconds = 60;
+
+			clockState = "idle";
 		    }
 		    else
 		    {
-			minutes--;
-			sessDur = minutes;
+			--minutes;
+			
+			if (currClock === "session")
+			    sessDur = minutes;
+
+			else if (currClock === "break")
+			    breakDur = minutes;
+
 			seconds = 60;
 		    }
 		}
@@ -82,21 +110,23 @@ $(document).ready(function() {
 
     });
 
-    $("#reset").click(function() {
+    $("#reset").click(reset);
 
+    function reset() {
 	if (clockState === "active")
 	    clearInterval(clock);
 	
 	sessDur = 25;
 	breakDur = 5;
+	seconds = 60;
 	
 	$("#timer").html(sessDur + ":00");
 	$("#sessVal").html(sessDur);
 	$("#breakVal").html(breakDur);
 
+	currClock = "session";
 	clock = undefined;
 	clockState = "idle";
-	
-    });
+    }
 
 });
