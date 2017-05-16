@@ -1,87 +1,136 @@
 $(document).ready(function() {
     
-    drawBoard();
-
-    $("#reset").click(reset);
+    var board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    var human, bot;
+        
+    $('.pick').click(function() {
+	if ($(this).text() == 'O')
+	{
+	    $(this).addClass('active');
+	    $(this).siblings().removeClass('active');
+	    human = 'O';
+	    bot = 'X';
+	    reset();
+	}
+	else
+	{
+	    $(this).addClass('active');
+	    $(this).siblings().removeClass('active');	    
+	    human = 'X';
+	    bot = 'O';
+	    reset();
+	}
+	
+    });	
+    var moves = 0;
+    $('.block').click(function() {
+	
+	if ($(this).text() == '')
+	{
+	    $(this).html(human);
+	    board[parseInt($(this).attr('id'))] = human;
+	    moves++;
+	    
+	    var botTurn = setTimeout(function() {
+		
+		var move = botMove(board, bot);
+		$('#' + move).html(bot);
+		board[move] = bot;
+		moves++;
+		
+		if (winning(board, bot))
+		{
+		    verdict('You lost :(');
+		}
+		
+	    }, 500);
+	}
+	
+	if (winning(board, human))
+	{
+	    verdict('You Won! :)');
+	}
+	else if (tie(board))
+	{
+	    verdict('It\'s a tie!');
+	}
+	
+    });
     
-});
+    $("#reset").click(reset);
 
-function reset()
-{
-    $("#board").html('');
+    /******************
+	   HELPERS
+    ******************/
 
-    drawBoard();
-}
+    function winning(board, player) {
+	if ((board[0] == player && board[1] == player && board[2] == player) ||
+	    (board[3] == player && board[4] == player && board[5] == player) ||
+	    (board[6] == player && board[7] == player && board[8] == player) ||
+	    (board[0] == player && board[4] == player && board[8] == player) ||
+	    (board[2] == player && board[4] == player && board[6] == player) ||
+	    (board[0] == player && board[3] == player && board[6] == player) ||
+	    (board[1] == player && board[4] == player && board[7] == player) ||
+	    (board[2] == player && board[5] == player && board[8] == player))
+	    return true;
 
-
-function drawBoard()
-{
-    for (var i = 0; i < 9; i++)
-    {
-	$("#board").append('<div id="' + i + '" class="block"></div>');
+	return false;
+    }
+    
+    function emptyIndices(board) {
+	return board.filter(val => val != 'O' && val != 'X');
     }
 
-    play();
-}
+    /*function minimax(board, player) {
+      
+      }*/
 
-function play()
-{
-    // whose turn is it?
-    var turn = "human";
+    function tie(board) {
+	var availSpots = emptyIndices(board);
+	if (availSpots.length > 0)
+	    return false;
+	else
+	    return true;
+    }
 
-    /*if (Math.random() > 0.5)
-	turn = "player";
-    else
-	turn = "bot";*/
-    
-    var human = "O";
-    var bot = "X";
-    
-    $(".block").click(function() {
-	if ($(this).text() == "")
+    function reset() {
+	board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+	for (var i = 0; i < 9; i++)
 	{
-	    if (turn === "human")
-	    {
-		$(this).append(human);
-
-		if (winning(human))
-		{
-		    setTimeout(function() {
-
-			$("#board").html("<p>You Won!</p>");
-			
-		    }, 500);
-		    
-		    setTimeout(reset, 2000);
-
-		}
-		//turn = "bot";		
-	    }
-
-
+	    $("#" + i).html('');
 	}
-    });
 
-    /*if (turn === "bot")
-    {
-	turn = "human";
-	}*/
+    }
 
+    function botMove(board, bot) {
+	var emptyBlocks = emptyIndices(board);
+	var generated = Math.floor(Math.random() * (emptyBlocks[emptyBlocks.length-1] - emptyBlocks[0])) + emptyBlocks[0];
 
-}
+	var move;
+	for (var i = emptyBlocks.length; i >= 0; i--)
+	{
+	    if (generated > emptyBlocks[i])
+	    {
+		move = emptyBlocks[i];
+		break;
+	    }
+	    else
+		move = generated;
+	}
 
-function winning(player) {
-    if (($("#0").text() == player && $("#1").text() == player && $("#2").text() == player) ||
-	($("#3").text() == player && $("#4").text() == player && $("#5").text() == player) ||
-	($("#6").text() == player && $("#7").text() == player && $("#8").text() == player) ||
-	($("#0").text() == player && $("#4").text() == player && $("#8").text() == player) ||
-	($("#2").text() == player && $("#4").text() == player && $("#6").text() == player) ||
-	($("#0").text() == player && $("#3").text() == player && $("#6").text() == player) ||
-	($("#1").text() == player && $("#4").text() == player && $("#7").text() == player) ||
-	($("#2").text() == player && $("#5").text() == player && $("#8").text() == player))
-	return true;
+	    return move;
+    }
 
-    return false;
-}
-    
-    
+    function verdict(message) {
+
+	$('#flash_message').html('<em>' + message + '</em>');
+	$('#flash_message').fadeIn('slow');
+	var fadeOut = setTimeout(function() {
+	    $('#flash_message').fadeOut('slow');
+	    reset();
+	}, 2000);
+
+    }
+
+});    
