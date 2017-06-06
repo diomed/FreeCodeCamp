@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body, html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #eee;
+}
+
+.container {
+    width: 480px;
+    height: 480px;
+    margin: 20px auto 0 auto;
+    padding: 10px 10px;
+
+    background-color: #ddd;
+    border-radius: 1px;
+    box-shadow: 0 0 5px #aaa;
+
+    text-align: center:
+}
+
+#msg {
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+
+    font-size: 24px;
+
+    background-color: #d5d5d5;
+    color: #777;
+
+    border-radius: 1px;
+    box-shadow: inset 2px 2px 2px 1px #aaa;
+    
+    margin: 10px auto;
+}
+
+.sndbtn {
+    width: 230px;
+    height: 160px;
+    display: inline-block;
+    float: left;
+    margin: 5px 5px;
+
+    border-radius: 20px;
+    box-shadow: 0 0 5px #999;
+}
+
+.tgl_wrapper {
+    width: 220px;
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.tgl_wrapper button {
+    width: 100px;
+    height: 50px;
+    font-size: 18px;    
+
+    float: left;
+    display: inline;
+
+    border: none;
+    border-radius: 1px;
+    box-shadow: 0 0 5px #999;
+
+    margin: 20px 5px;
+    text-align: center;
+
+
+    color: #444;
+    background-color: #cfcfcf;
+}
+
+#btn1 {
+    background-color: rgb(103, 194, 104);
+}
+
+#btn1:hover, #btn1.glow {
+    background-color: rgb(52, 195, 54);
+}
+
+#btn2 {
+    background-color: #c84d4d;
+}
+
+#btn2:hover, #btn2.glow {
+    background-color: #cb3535;
+}
+
+#btn3 {
+    background-color: #e6d383;
+}
+
+#btn3:hover, #btn3.glow {
+    background-color: #eacc4e;
+}
+
+#btn4 {
+    background-color: rgb(82, 122, 216);
+}
+
+#btn4:hover, #btn4.glow {
+    background-color: rgb(40, 92, 213);
+}
+
