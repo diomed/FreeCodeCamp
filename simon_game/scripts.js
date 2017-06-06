@@ -18,7 +18,7 @@ $(document).ready(function() {
 	playerClicks = [],
 	gameOn = false,
 	strictMode = false,
-	speed = 800;
+	speed = 600;
 
     // toggle the game between strict and not strict
     $('#strct_tgl').click(function() {
@@ -61,10 +61,10 @@ $(document).ready(function() {
     function showPattern() {
 	if (gameOn) {
 	    setTimeout(displayMessage(level+1), 3000);
-	    if (level > 7)
-		speed = 600;
-	    else if (level > 13)
-		speed = 300;
+	    if (level > 6)
+		speed = 400;
+	    else if (level > 12)
+		speed = 200;
 	    let i = 0;
 	    let pattern = setInterval(function() {
 		
@@ -87,12 +87,12 @@ $(document).ready(function() {
 	$('#btn'+btn).addClass('glow');
 	setTimeout(function() {
 	    $('#btn'+btn).removeClass('glow');
-	}, 300);
+	}, 200);
     }
 
     function playerMove() {
 	if (gameOn) {
-	    $('.sndbtn').unbind().click(function() {
+	    $('.sndbtn').off().click(function() {
 		switch (this.id) {
 		case 'btn1':
 		    playSound(1);
