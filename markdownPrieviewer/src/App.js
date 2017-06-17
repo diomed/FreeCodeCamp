@@ -1,12 +1,11 @@
-import Markdown from 'markdown-to-jsx';
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import './App.min.css';
 
 const marked = require('marked');
-
-function MarkItDown(props) {
-  return marked(props);
-}
+marked.setOptions({
+  gfm: true,
+  sanitize: true,
+});
 
 class App extends Component {
   constructor() {
@@ -18,24 +17,30 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
   }
+
+  markItDown(props) {
+    return {__html: marked(props)};
+  }
+
   handleChange(event) {
-    this.setState({markdownValue: marked(event.target.value)});
+    this.setState({value: event.target.value});
   }
 
   render() {
     return (
       <div className="App">
-        <h1>Markdown Previewer</h1>
-        <div className="toMarkDown">
-          <h2>Type stuff here</h2>
-          <textarea cols="40" rows="10"
-            value={(prev, curr) => {prev += curr}}
-            onChange={this.handleChange} />
-        </div>
-        <div className="markedDown">
-        <Markdown>
-          {this.state.markdownValue}
-        </Markdown>
+        <h1 className="text-center">Markdown Previewer</h1>
+        <div className="container">
+          <div className="mdInput">
+            <h2>Write your markdown below</h2>
+            <textarea cols="40" rows="20"
+              value={this.state.value}
+              onChange={this.handleChange} />
+          </div>
+          <div className="mdOutput">
+            <h2>Preview</h2>
+            <span dangerouslySetInnerHTML={this.markItDown(this.state.value)} />
+          </div>
         </div>
       </div>
     )
